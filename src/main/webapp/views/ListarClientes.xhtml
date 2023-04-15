@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+	<h:outputStylesheet library="css" name="index.css" />
+	<link rel="stylesheet"
+		href="#{request.contextPath}/webjars/bootstrap/5.1.0/css/bootstrap.min.css" />
+
+	<title>Insert title here</title>
+</h:head>
+
+<h:body>
+	<h1 class="text-center text-secundary my-4">Lista de clientes</h1>
+
+
+	<p:growl id="msgs" />
+	<h:form id="form" styleClass="container ">
+
+		<div class="table-responsive">
+
+			<p:dataTable value="#{bean.clientes}" var="cliente"
+				id="tabelaCliente"
+				styleClass="table table-sm table-striped table-bordered table-hover" style="width: 100%;">>
+				<p:column headerText="Nome" headerClass="text-center">#{cliente.nome}</p:column>
+				<p:column headerText="E-mail" headerClass="text-center">#{cliente.email}</p:column>
+				<p:column headerText="Endereço" headerClass="text-center">#{cliente.endereco}</p:column>
+				<p:column headerText="Telefone" headerClass="text-center">#{cliente.telefone}</p:column>
+				<p:column headerText="CPF" headerClass="text-center">#{cliente.cpf}</p:column>
+
+				<p:column headerText="Editar" width="150" headerClass="text-center">
+
+					<p:button
+						outcome="/views/EditarCliente.xhtml?parametro=#{cliente.nome}"
+						icon="ui-icon-pencil"
+						styleClass="btn btn-sm btn-outline-secondary" />
+
+
+					<p:commandButton icon="ui-icon-trash"
+						styleClass="btn btn-sm btn-outline-danger"
+						actionListener="#{bean.excluir(cliente)}" update="tabelaCliente">
+						<p:confirm header="Excluir"
+							message="Tem certeza que deseja excluir?" />
+					</p:commandButton>
+
+					<p:confirmDialog global="true">
+						<p:commandButton value="Sim" action="#{msg.excluir}" update="msgs"
+							styleClass="ui-confirmdialog-yes btn btn-sm btn-outline-success mr-2"
+							icon="ui-icon-check" />
+
+						<p:commandButton value="Não"
+							styleClass="ui-confirmdialog-no btn btn-sm btn-outline-danger"
+							icon="ui-icon-close" />
+					</p:confirmDialog>
+
+				</p:column>
+
+			</p:dataTable>
+		</div>
+	</h:form>
+
+</h:body>
+</html>
+

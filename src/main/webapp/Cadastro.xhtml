@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+	<h:outputStylesheet library="css" name="index.css" />
+	<link rel="stylesheet"
+		href="#{request.contextPath}/webjars/bootstrap/5.1.0/css/bootstrap.min.css" />
+
+	<title>Sistema de Cadastro</title>
+</h:head>
+
+<h:body styleClass="bg-light ">
+
+	<p:outputPanel styleClass="container">
+		<p:graphicImage library="imagens" name="pngwing.png" width="100"
+			styleClass="mx-auto d-block mb-5" />
+
+
+
+		<p:growl id="msgs" />
+
+		<h:form id="form"
+			styleClass="container justify-content-center col-md-6 col-sm-12  ">
+			<h1 Class="text-center mb-5">Cadastro de clientes</h1>
+
+
+			<p:panel header="Cadastro de clientes" styleClass="p-mb-5 p-0 ">
+				<h:panelGrid columns="2" styleClass="col-12  ">
+
+					<p:outputLabel value="Nome:" for="@next" />
+					<p:inputText value="#{bean.cliente.nome}"
+						placeholder="Nome completo" styleClass="form-control "
+						style="width: 350px; margin-left: -10px;">
+						<f:validateBean />
+					</p:inputText>
+
+					<p:outputLabel value="E-mail:" for="@next" />
+					<p:inputText value="#{bean.cliente.email}"
+						placeholder="meu@melhoremail.com" required="true"
+						styleClass="form-control"
+						style="width: 350px; margin-left: -10px;" />
+
+					<p:outputLabel value="Endereço:" for="@next" />
+					<p:inputText value="#{bean.cliente.endereco}"
+						placeholder="Endereço" styleClass="form-control" required="true"
+						style="width: 350px; margin-left: -10px;" />
+
+					<p:outputLabel value="Telefone:" for="@next" />
+					<p:inputMask id="phone" value="#{bean.cliente.telefone}"
+						mask="(99) 99999-9999" validateMask="true"
+						placeholder="Telefone(com DDD)" required="true"
+						styleClass="form-control"
+						style="width: 350px; margin-left: -10px;" />
+
+					<p:outputLabel value="CPF:" for="@next" />
+					<p:inputMask id="cpf" mask="999.999.999-99"
+						value="#{bean.cliente.cpf}" placeholder="XXX.XXX.XXX-XX"
+						required="true" styleClass="form-control"
+						style="width: 350px; margin-left: -10px;">
+						<p:keyFilter regEx="/[0-9]/" />
+					</p:inputMask>
+
+
+				</h:panelGrid>
+			</p:panel>
+
+			<h:panelGrid columns="2"
+				styleClass="col-12 d-flex justify-content-center">
+
+				<h:panelGroup styleClass="text-center my-3">
+					<p:outputLabel />
+					<p:commandButton value="Cadastrar" action="#{bean.adicionar}"
+						icon="ui-icon-disk" oncomplete="document.getElementById('form').reset();"  process="@form" update="@form"
+						styleClass="btn btn-secondary btn-lg btn-block"
+						style="width: 100%;">
+						<p:confirm header="Salvar"
+							message="Tem certeza que deseja cadastrar?" />
+					</p:commandButton>
+				</h:panelGroup>
+
+
+				<p:confirmDialog global="true">
+					<p:commandButton value="Sim" action="#{msg.cadastrar}"
+						styleClass="ui-confirmdialog-yes btn btn-success mr-2"
+						icon="ui-icon-check" update="msgs" />
+
+					<p:commandButton value="Não"
+						styleClass="ui-confirmdialog-no btn btn-danger"
+						icon="ui-icon-close" />
+				</p:confirmDialog>
+
+				<h:panelGroup styleClass="text-center my-3">
+					<p:button value="Listar" icon="ui-icon-tag"
+						outcome="/views/ListarClientes.xhtml"
+						styleClass="btn btn-secondary" style=" width: 100%; " />
+				</h:panelGroup>
+			</h:panelGrid>
+
+		</h:form>
+
+	</p:outputPanel>
+</h:body>
+</html>
