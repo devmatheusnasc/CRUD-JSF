@@ -3,31 +3,26 @@ package br.com.dominio.model;
 import java.io.Serializable;
 import java.util.Objects;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-
 public class Cliente implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
-	
+
 	private Integer id;
 
-	@NotBlank(message = "O nome não pode está em branco")
 	private String nome;
 
-	@Email(message = "O email deve ser válido")
 	private String email;
 
-	@NotBlank(message = "O endereço não pode está em branco")
 	private String endereco;
 
-	@NotBlank(message = "O endereço não pode está em branco")
 	private String telefone;
-	
-	@NotBlank(message = "O endereço não pode está em branco")
+
 	private String cpf;
 
-	
+
+	public Cliente() {
+		
+	}
+
 	public Integer getId() {
 		return id;
 	}

@@ -12,13 +12,21 @@
 	<link rel="stylesheet"
 		href="#{request.contextPath}/webjars/bootstrap/5.1.0/css/bootstrap.min.css" />
 
-	<title>Sistema de Cadastro</title>
+	<title>Atualização</title>
 </h:head>
 
 <h:body styleClass="bg-light ">
 
+	<p:button icon="ui-icon-arrowthick-1-w"
+		styleClass="btn btn-sm btn-secondary position-absolute top-0 start-0"
+		outcome="ListarClientes.xhtml" style="width: 50px;" />
+
+	<p:button icon="ui-icon-home"
+		styleClass="btn btn-sm btn-secondary top-0 start-0"
+		outcome="/Cadastro.xhtml" style="width: 50px; margin-left: 55px;" />
+
 	<p:outputPanel styleClass="container">
-		<p:graphicImage library="imagens" name="pngwing.png" width="100"
+		<p:graphicImage library="imagens" name="update.png" width="150"
 			styleClass="mx-auto d-block mb-5" />
 
 
@@ -27,42 +35,37 @@
 
 		<h:form id="form"
 			styleClass="container justify-content-center col-md-6 col-sm-12  ">
-			<h1 Class="text-center mb-5">Cadastro de clientes</h1>
 
 
-			<p:panel header="Cadastro de clientes" styleClass="p-mb-5 p-0 ">
-				<h:panelGrid columns="2" styleClass="col-12  ">
+			<p:panel header="Atualização de cliente"
+				styleClass="p-mb-5  p-0 text-center ">
+				<h:panelGrid columns="2" styleClass="col-10   ">
 
 					<p:outputLabel value="Nome:" for="@next" />
-					<p:inputText value="#{bean.cliente.nome}"
-						placeholder="Nome completo" styleClass="form-control "
-						style="width: 350px; margin-left: -10px;">
+					<p:inputText value="#{bean.novoNome}"
+						placeholder="Nome completo" styleClass="form-control ">
 						<f:validateBean />
 					</p:inputText>
 
 					<p:outputLabel value="E-mail:" for="@next" />
-					<p:inputText value="#{bean.cliente.email}"
-						placeholder="meu@melhoremail.com" required="true"
-						styleClass="form-control"
-						style="width: 350px; margin-left: -10px;" />
+					<p:inputText value="#{bean.novoEmail}"
+						placeholder="meu@melhoremail.com"
+						styleClass="form-control" />
 
 					<p:outputLabel value="Endereço:" for="@next" />
-					<p:inputText value="#{bean.cliente.endereco}"
-						placeholder="Endereço" styleClass="form-control" required="true"
-						style="width: 350px; margin-left: -10px;" />
+					<p:inputText value="#{bean.novoEndereco}"
+						placeholder="Endereço" styleClass="form-control"/>
 
 					<p:outputLabel value="Telefone:" for="@next" />
-					<p:inputMask id="phone" value="#{bean.cliente.telefone}"
+					<p:inputMask id="phone" value="#{bean.novoTelefone}"
 						mask="(99) 99999-9999" validateMask="true"
-						placeholder="Telefone(com DDD)" required="true"
-						styleClass="form-control"
-						style="width: 350px; margin-left: -10px;" />
+						placeholder="Telefone"
+						styleClass="form-control" />
 
 					<p:outputLabel value="CPF:" for="@next" />
 					<p:inputMask id="cpf" mask="999.999.999-99"
-						value="#{bean.cliente.cpf}" placeholder="XXX.XXX.XXX-XX"
-						required="true" styleClass="form-control"
-						style="width: 350px; margin-left: -10px;">
+						value="#{bean.novoCpf}" placeholder="XXX.XXX.XXX-XX"
+						styleClass="form-control">
 						<p:keyFilter regEx="/[0-9]/" />
 					</p:inputMask>
 
@@ -75,12 +78,12 @@
 
 				<h:panelGroup styleClass="text-center my-3">
 					<p:outputLabel />
-					<p:commandButton value="Atualizar" action="#{bean.atualizar}"
-						icon="ui-icon-disk"
-						oncomplete="document.getElementById('form').reset();"
-						process="@form" update="@form"
+					
+					<p:commandButton value="Atualizar" actionListener="#{bean.atualizar}"
+						icon="ui-icon-disk" update="@form"
 						styleClass="btn btn-secondary btn-lg btn-block"
 						style="width: 100%;">
+						
 						<p:confirm header="Atualizar"
 							message="Tem certeza que deseja atualizar?" />
 					</p:commandButton>

@@ -11,31 +11,40 @@
 	<link rel="stylesheet"
 		href="#{request.contextPath}/webjars/bootstrap/5.1.0/css/bootstrap.min.css" />
 
-	<title>Insert title here</title>
+	<title>Lista dos clientes</title>
 </h:head>
 
 <h:body>
-	<h1 class="text-center text-secundary my-4">Lista de clientes</h1>
+	<p:button icon="ui-icon-arrowthick-1-w"
+		styleClass="btn btn-sm btn-secondary top-0 start-0"
+		outcome="/Cadastro.xhtml" style="width: 50px;" />
+
+
 
 
 	<p:growl id="msgs" />
 	<h:form id="form" styleClass="container ">
+		<p:graphicImage library="imagens" name="cliente.png" width="150"
+			styleClass="mx-auto d-block mb-5" />
 
+		<h1 class="text-center text-secundary my-4">Lista de clientes</h1>
 		<div class="table-responsive">
 
 			<p:dataTable value="#{bean.clientes}" var="cliente"
 				id="tabelaCliente"
-				styleClass="table table-sm table-striped table-bordered table-hover" style="width: 100%;">>
+				styleClass="table table-sm table-striped table-bordered table-hover mt-4 "
+				style="width: 100%;">
 				<p:column headerText="Nome" headerClass="text-center">#{cliente.nome}</p:column>
 				<p:column headerText="E-mail" headerClass="text-center">#{cliente.email}</p:column>
 				<p:column headerText="Endereço" headerClass="text-center">#{cliente.endereco}</p:column>
 				<p:column headerText="Telefone" headerClass="text-center">#{cliente.telefone}</p:column>
 				<p:column headerText="CPF" headerClass="text-center">#{cliente.cpf}</p:column>
+				<p:column headerText="CPF" headerClass="text-center">#{cliente.id}</p:column>
 
 				<p:column headerText="Editar" width="150" headerClass="text-center">
 
 					<p:button
-						outcome="/views/EditarCliente.xhtml?parametro=#{cliente.nome}"
+						outcome="/views/EditarCliente.xhtml?parametro=#{cliente.id}"
 						icon="ui-icon-pencil"
 						styleClass="btn btn-sm btn-outline-secondary" />
 

@@ -18,7 +18,7 @@
 <h:body styleClass="bg-light ">
 
 	<p:outputPanel styleClass="container">
-		<p:graphicImage library="imagens" name="pngwing.png" width="100"
+		<p:graphicImage library="imagens" name="pngwing.png" width="150"
 			styleClass="mx-auto d-block mb-5" />
 
 
@@ -27,44 +27,40 @@
 
 		<h:form id="form"
 			styleClass="container justify-content-center col-md-6 col-sm-12  ">
-			<h1 Class="text-center mb-5">Cadastro de clientes</h1>
 
 
-			<p:panel header="Cadastro de clientes" styleClass="p-mb-5 p-0 ">
-				<h:panelGrid columns="2" styleClass="col-12  ">
-
+			<p:panel header="Cadastro de clientes"
+				styleClass="p-mb-5 p-0 text-center">
+				<h:panelGrid columns="2" styleClass="col-10  ">
+					
 					<p:outputLabel value="Nome:" for="@next" />
 					<p:inputText value="#{bean.cliente.nome}"
-						placeholder="Nome completo" styleClass="form-control "
-						style="width: 350px; margin-left: -10px;">
+						placeholder="Nome completo" styleClass="form-control"
+						required="true">
 						<f:validateBean />
 					</p:inputText>
 
 					<p:outputLabel value="E-mail:" for="@next" />
 					<p:inputText value="#{bean.cliente.email}"
 						placeholder="meu@melhoremail.com" required="true"
-						styleClass="form-control"
-						style="width: 350px; margin-left: -10px;" />
+						styleClass="form-control" />
 
 					<p:outputLabel value="Endereço:" for="@next" />
 					<p:inputText value="#{bean.cliente.endereco}"
-						placeholder="Endereço" styleClass="form-control" required="true"
-						style="width: 350px; margin-left: -10px;" />
+						placeholder="Endereço" styleClass="form-control" required="true" />
 
 					<p:outputLabel value="Telefone:" for="@next" />
 					<p:inputMask id="phone" value="#{bean.cliente.telefone}"
-						mask="(99) 99999-9999" validateMask="true"
-						placeholder="Telefone(com DDD)" required="true"
-						styleClass="form-control"
-						style="width: 350px; margin-left: -10px;" />
+						mask="(99) 99999-9999" validateMask="true" placeholder="Telefone"
+						required="true" styleClass="form-control" />
 
 					<p:outputLabel value="CPF:" for="@next" />
 					<p:inputMask id="cpf" mask="999.999.999-99"
 						value="#{bean.cliente.cpf}" placeholder="XXX.XXX.XXX-XX"
-						required="true" styleClass="form-control"
-						style="width: 350px; margin-left: -10px;">
+						required="true" styleClass="form-control">
 						<p:keyFilter regEx="/[0-9]/" />
 					</p:inputMask>
+
 
 
 				</h:panelGrid>
@@ -76,7 +72,7 @@
 				<h:panelGroup styleClass="text-center my-3">
 					<p:outputLabel />
 					<p:commandButton value="Cadastrar" action="#{bean.adicionar}"
-						icon="ui-icon-disk" oncomplete="document.getElementById('form').reset();"  process="@form" update="@form"
+						icon="ui-icon-disk" process="@form" update="@form"
 						styleClass="btn btn-secondary btn-lg btn-block"
 						style="width: 100%;">
 						<p:confirm header="Salvar"
