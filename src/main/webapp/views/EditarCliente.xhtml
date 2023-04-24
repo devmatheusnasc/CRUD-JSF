@@ -42,30 +42,27 @@
 				<h:panelGrid columns="2" styleClass="col-10   ">
 
 					<p:outputLabel value="Nome:" for="@next" />
-					<p:inputText value="#{bean.novoNome}"
-						placeholder="Nome completo" styleClass="form-control ">
+					<p:inputText value="#{bean.novoNome}" placeholder="Nome completo"
+						styleClass="form-control" resetValues="true">
 						<f:validateBean />
 					</p:inputText>
 
 					<p:outputLabel value="E-mail:" for="@next" />
 					<p:inputText value="#{bean.novoEmail}"
-						placeholder="meu@melhoremail.com"
-						styleClass="form-control" />
+						placeholder="meu@melhoremail.com" styleClass="form-control" resetValues="true" />
 
 					<p:outputLabel value="Endereço:" for="@next" />
-					<p:inputText value="#{bean.novoEndereco}"
-						placeholder="Endereço" styleClass="form-control"/>
+					<p:inputText value="#{bean.novoEndereco}" placeholder="Endereço"
+						styleClass="form-control" resetValues="true" />
 
 					<p:outputLabel value="Telefone:" for="@next" />
 					<p:inputMask id="phone" value="#{bean.novoTelefone}"
-						mask="(99) 99999-9999" validateMask="true"
-						placeholder="Telefone"
-						styleClass="form-control" />
+						mask="(99) 99999-9999" validateMask="true" placeholder="Telefone"
+						styleClass="form-control" resetValues="true" />
 
 					<p:outputLabel value="CPF:" for="@next" />
-					<p:inputMask id="cpf" mask="999.999.999-99"
-						value="#{bean.novoCpf}" placeholder="XXX.XXX.XXX-XX"
-						styleClass="form-control">
+					<p:inputMask id="cpf" mask="999.999.999-99" value="#{bean.novoCpf}"
+						placeholder="XXX.XXX.XXX-XX" styleClass="form-control" resetValues="true">
 						<p:keyFilter regEx="/[0-9]/" />
 					</p:inputMask>
 
@@ -78,12 +75,12 @@
 
 				<h:panelGroup styleClass="text-center my-3">
 					<p:outputLabel />
-					
-					<p:commandButton value="Atualizar" actionListener="#{bean.atualizar}"
-						icon="ui-icon-disk" update="@form"
-						styleClass="btn btn-secondary btn-lg btn-block"
+
+					<p:commandButton value="Atualizar"
+						actionListener="#{bean.atualizar}" icon="ui-icon-disk"
+						update="@form" styleClass="btn btn-secondary btn-lg btn-block"
 						style="width: 100%;">
-						
+
 						<p:confirm header="Atualizar"
 							message="Tem certeza que deseja atualizar?" />
 					</p:commandButton>

@@ -66,13 +66,14 @@ public class ClienteController implements Serializable {
 
 	public String atualizar() {
 		
-		System.out.println("id: " + cliente.getId());
+			int cont = clientes.size()-1;
 		
-			Cliente clientenovo = clientes.get(cliente.getId());
+			Cliente clientenovo = clientes.get(cont);
+			
 			System.out.println("id cliente novo: " + clientenovo);
 			
 			
-			System.out.println("Índice: " + cliente.getId());
+			System.out.println("Índice: " + cont);
 			System.out.println("ID: " + clientenovo.getId());
 			System.out.println("Nome: " + clientenovo.getNome());
 			System.out.println("Email: " + clientenovo.getEmail());
